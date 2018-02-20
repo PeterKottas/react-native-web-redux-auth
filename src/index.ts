@@ -5,6 +5,7 @@ export { default as loadUser } from './shared/helpers/loadUser';
 export { default as CallbackComponent } from './web/CallbackComponent';
 export { default as reducer } from './shared/reducer/reducer';
 export { default as OidcProvider } from './shared/OidcProvider';
+export { default as FinalUser } from './shared/FinalUser';
 
 // web components
 export { default as createUserManager } from './web/helpers/createUserManager';
