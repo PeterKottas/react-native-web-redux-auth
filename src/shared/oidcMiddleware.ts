@@ -1,7 +1,8 @@
 import { userExpired, userFound, loadingUser, loadUserError } from './actions';
 import { USER_EXPIRED, LOADING_USER, USER_FOUND } from './constants';
 import { Middleware, MiddlewareAPI, Dispatch, Action } from 'redux';
-import { User, UserManager } from 'oidc-client';
+import { UserManager } from 'oidc-client';
+import FinalUser from './FinalUser';
 
 // store the user here to prevent future promise calls to getUser()
 export let storedUser = null;
@@ -19,7 +20,7 @@ export function getNext(): Middleware {
 }
 
 // helper function to set the stored user manually (for testing)
-export function setStoredUser(user: User) {
+export function setStoredUser(user: FinalUser) {
     storedUser = user;
 }
 
@@ -29,7 +30,7 @@ export function removeStoredUser() {
 }
 
 // callback function to the userManager's getUser
-export function getUserCallback(user: User) {
+export function getUserCallback(user: FinalUser) {
     if (!user || user.expired) {
         nextMiddleware(userExpired());
     } else {
@@ -67,13 +68,11 @@ export const middlewareHandler = (userManager: UserManager): Middleware =>
             };
 
 // the middleware creator function
-export default function createOidcMiddleware(userManager: UserManager) {
+export default function createOidcMiddleware(userManager: UserManager): Middleware {
     if (!userManager || !userManager.getUser) {
         throw new Error('You must provide a user manager!');
     }
 
     // the middleware
-    return (store) => (next) => (action) => {
-        middlewareHandler(userManager)(store)(next)(action);
-    };
+    return middlewareHandler(userManager);
 }

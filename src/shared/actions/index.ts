@@ -1,5 +1,5 @@
-import { User } from 'oidc-client';
 import { Action } from 'redux';
+import FinalUser from './../FinalUser';
 import {
   USER_EXPIRED,
   REDIRECT_SUCCESS,
@@ -20,7 +20,7 @@ export function userExpired() {
 }
 
 // dispatched after a successful redirect callback
-export function redirectSuccess(user: User) {
+export function redirectSuccess(user: FinalUser) {
   return {
     type: REDIRECT_SUCCESS,
     payload: user
@@ -28,7 +28,7 @@ export function redirectSuccess(user: User) {
 }
 
 // dispatched when a user has been found in storage
-export function userFound(user: User) {
+export function userFound(user: FinalUser) {
   return {
     type: USER_FOUND,
     payload: user

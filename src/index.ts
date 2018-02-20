@@ -1,32 +1,35 @@
-import createOidcMiddleware from './oidcMiddleware';
+import createOidcMiddleware from './shared/oidcMiddleware';
 
 // redux-oidc components
-export { default as createUserManager } from './helpers/createUserManager';
-export { default as processSilentRenew } from './helpers/processSilentRenew';
-export { default as loadUser } from './helpers/loadUser';
-export { default as CallbackComponent } from './CallbackComponent';
-export { default as reducer } from './reducer/reducer';
-export { default as OidcProvider } from './OidcProvider';
+export { default as createUserManager } from './web/helpers/createUserManager';
+export { default as processSilentRenew } from './web/helpers/processSilentRenew';
+export { default as loadUser } from './shared/helpers/loadUser';
+export { default as CallbackComponent } from './web/CallbackComponent';
+export { default as reducer } from './shared/reducer/reducer';
+export { default as OidcProvider } from './shared/OidcProvider';
 
-// constants
-export { USER_EXPIRED } from './constants';
-export { REDIRECT_SUCCESS } from './constants';
-export { USER_FOUND } from './constants';
-export { SILENT_RENEW_ERROR } from './constants';
-export { SESSION_TERMINATED } from './constants';
-export { USER_EXPIRING } from './constants';
-export { LOADING_USER } from './constants';
-export { USER_SIGNED_OUT } from './constants';
-export { LOAD_USER_ERROR } from './constants';
+// shared constants
+export { USER_EXPIRED } from './shared/constants';
+export { REDIRECT_SUCCESS } from './shared/constants';
+export { USER_FOUND } from './shared/constants';
+export { SILENT_RENEW_ERROR } from './shared/constants';
+export { SESSION_TERMINATED } from './shared/constants';
+export { USER_EXPIRING } from './shared/constants';
+export { LOADING_USER } from './shared/constants';
+export { USER_SIGNED_OUT } from './shared/constants';
+export { LOAD_USER_ERROR } from './shared/constants';
+
+// native constants
+export { USER_STORE_KEY } from './native/constants';
 
 // actions
-export { userExpired } from './actions';
-export { redirectSuccess } from './actions';
-export { userFound } from './actions';
-export { silentRenewError } from './actions';
-export { sessionTerminated } from './actions';
-export { userExpiring } from './actions';
-export { loadingUser } from './actions';
-export { userSignedOut } from './actions';
+export { userExpired } from './shared/actions';
+export { redirectSuccess } from './shared/actions';
+export { userFound } from './shared/actions';
+export { silentRenewError } from './shared/actions';
+export { sessionTerminated } from './shared/actions';
+export { userExpiring } from './shared/actions';
+export { loadingUser } from './shared/actions';
+export { userSignedOut } from './shared/actions';
 
 export default createOidcMiddleware;

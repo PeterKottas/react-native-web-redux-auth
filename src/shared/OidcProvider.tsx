@@ -1,20 +1,26 @@
 import * as React from 'react';
 import { userExpired, userFound, silentRenewError, sessionTerminated, userExpiring, userSignedOut } from './actions';
 import { Store } from 'redux';
-import { UserManager, User } from 'oidc-client';
+import { UserManager } from 'oidc-client';
+import FinalUser from './FinalUser';
+import { NativeUserManager } from '../native/NativeUserManager';
+import { Platform } from 'react-native';
 
 export interface OidcProviderProps {
     userManager: UserManager;
+    nativeUserManager: NativeUserManager;
     // tslint:disable-next-line:no-any
     store: Store<any>;
 }
 
 class OidcProvider extends React.Component<OidcProviderProps> {
     private userManager: UserManager;
+    private nativeUserManager: NativeUserManager;
 
     constructor(props: OidcProviderProps) {
         super(props);
         this.userManager = props.userManager;
+        this.nativeUserManager = props.nativeUserManager;
         this.onUserLoaded = this.onUserLoaded.bind(this);
         this.onSilentRenewError = this.onSilentRenewError.bind(this);
         this.onAccessTokenExpired = this.onAccessTokenExpired.bind(this);
@@ -25,22 +31,30 @@ class OidcProvider extends React.Component<OidcProviderProps> {
 
     public componentWillMount() {
         // register the event callbacks
-        this.userManager.events.addUserLoaded(this.onUserLoaded);
-        this.userManager.events.addSilentRenewError(this.onSilentRenewError);
-        this.userManager.events.addAccessTokenExpired(this.onAccessTokenExpired);
-        this.userManager.events.addAccessTokenExpiring(this.onAccessTokenExpiring);
-        this.userManager.events.addUserUnloaded(this.onUserUnloaded);
-        this.userManager.events.addUserSignedOut(this.onUserSignedOut);
+        if (Platform.OS === 'web') {
+            this.userManager.events.addUserLoaded(this.onUserLoaded);
+            this.userManager.events.addSilentRenewError(this.onSilentRenewError);
+            this.userManager.events.addAccessTokenExpired(this.onAccessTokenExpired);
+            this.userManager.events.addAccessTokenExpiring(this.onAccessTokenExpiring);
+            this.userManager.events.addUserUnloaded(this.onUserUnloaded);
+            this.userManager.events.addUserSignedOut(this.onUserSignedOut);
+        } else {
+            this.nativeUserManager.events.addUserLoaded(this.onUserLoaded);
+        }
     }
 
     public componentWillUnmount() {
         // unregister the event callbacks
-        this.userManager.events.removeUserLoaded(this.onUserLoaded);
-        this.userManager.events.removeSilentRenewError(this.onSilentRenewError);
-        this.userManager.events.removeAccessTokenExpired(this.onAccessTokenExpired);
-        this.userManager.events.removeAccessTokenExpiring(this.onAccessTokenExpiring);
-        this.userManager.events.removeUserUnloaded(this.onUserUnloaded);
-        this.userManager.events.removeUserSignedOut(this.onUserSignedOut);
+        if (Platform.OS === 'web') {
+            this.userManager.events.removeUserLoaded(this.onUserLoaded);
+            this.userManager.events.removeSilentRenewError(this.onSilentRenewError);
+            this.userManager.events.removeAccessTokenExpired(this.onAccessTokenExpired);
+            this.userManager.events.removeAccessTokenExpiring(this.onAccessTokenExpiring);
+            this.userManager.events.removeUserUnloaded(this.onUserUnloaded);
+            this.userManager.events.removeUserSignedOut(this.onUserSignedOut);
+        } else {
+            this.nativeUserManager.events.removeUserLoaded(this.onUserLoaded);
+        }
     }
 
     public render() {
@@ -48,7 +62,7 @@ class OidcProvider extends React.Component<OidcProviderProps> {
     }
 
     // event callback when the user has been loaded (on silent renew or redirect)
-    private onUserLoaded(user: User) {
+    private onUserLoaded(user: FinalUser) {
         this.props.store.dispatch(userFound(user));
     }
 

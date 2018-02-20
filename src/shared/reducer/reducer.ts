@@ -7,11 +7,11 @@ import {
     LOADING_USER,
     USER_SIGNED_OUT
 } from '../constants';
-import { User } from 'oidc-client';
 import { ActionBaseType } from '../actions';
+import FinalUser from './../FinalUser';
 
 export interface AuthState {
-    user: User;
+    user: FinalUser;
     isLoadingUser: boolean;
 }
 

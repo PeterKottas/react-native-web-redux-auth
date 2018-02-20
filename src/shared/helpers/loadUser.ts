@@ -1,6 +1,7 @@
 import { userFound, userExpired, loadUserError, loadingUser } from '../actions';
 import { Store } from 'redux';
-import { User, UserManager } from 'oidc-client';
+import {  UserManager } from 'oidc-client';
+import FinalUser from './../FinalUser';
 
 // stores the redux store here to be accessed by all functions
 let reduxStore;
@@ -16,7 +17,7 @@ export function getReduxStore() {
 }
 
 // callback function called when the user has been loaded
-export function getUserCallback(user: User) {
+export function getUserCallback(user: FinalUser) {
   if (user && !user.expired) {
     reduxStore.dispatch(userFound(user));
   } else if (!user || (user && user.expired)) {

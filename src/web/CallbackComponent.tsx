@@ -3,8 +3,8 @@ import { UserManager, User } from 'oidc-client';
 
 export interface CallbackComponentProps {
     userManager: UserManager;
-    successCallback: (user: User) => void;
-    errorCallback: (error: Error) => void;
+    successCallback?: (user: User) => void;
+    errorCallback?: (error: Error) => void;
 }
 
 class CallbackComponent extends React.Component<CallbackComponentProps> {
