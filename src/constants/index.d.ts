@@ -1,0 +1,10 @@
+export declare const USER_EXPIRED = "redux-oidc/USER_EXPIRED";
+export declare const REDIRECT_SUCCESS = "redux-oidc/REDIRECT_SUCCESS";
+export declare const USER_LOADED = "redux-oidc/USER_LOADED";
+export declare const SILENT_RENEW_ERROR = "redux-oidc/SILENT_RENEW_ERROR";
+export declare const SESSION_TERMINATED = "redux-oidc/SESSION_TERMINATED";
+export declare const USER_EXPIRING = "redux-oidc/USER_EXPIRING";
+export declare const USER_FOUND = "redux-oidc/USER_FOUND";
+export declare const LOADING_USER = "redux-oidc/LOADING_USER";
+export declare const USER_SIGNED_OUT = "redux-oidc/USER_SIGNED_OUT";
+export declare const LOAD_USER_ERROR = "redux-oidc/LOAD_USER_ERROR";

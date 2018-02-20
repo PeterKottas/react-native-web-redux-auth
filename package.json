@@ -1,0 +1,70 @@
+{
+  "version": "1.0.161",
+  "description": "Easy to use solution for OAuth2 OpenId authentication in react-native-web.",
+  "keywords": [
+    "react-native",
+    "react-native-web",
+    "auth",
+    "authentication",
+    "oauth",
+    "openid",
+    "react"
+  ],
+  "main": "build/react-native-web-redux-auth.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "16.0.34",
+    "@types/react-dom": "16.0.3",
+    "@types/redux": "^3.6.0",
+    "@types/webpack": "3.8.3",
+    "@types/webpack-env": "1.13.3",
+    "awesome-typescript-loader": "3.4.1",
+    "conventional-github-releaser": "2.0.0",
+    "dts-bundle": "0.7.3",
+    "file-loader": "1.1.6",
+    "lodash": "4.17.4",
+    "oidc-client": "^1.4.1",
+    "oidc-client-fetch": "^1.2.2-fetch1",
+    "prop-types": "15.6.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "redux": "^3.7.2",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
+    "typescript": "2.6.2",
+    "webpack": "3.10.0",
+    "webpack-bundle-analyzer": "^2.10.0",
+    "webpack-dev-server": "2.11.1",
+    "webpack-merge": "4.1.1"
+  },
+  "name": "guestbell-forms",
+  "scripts": {
+    "build:local": "npm run build:clean && webpack --config ./webpack/webpack.config.js",
+    "build:lib": "webpack --config ./webpack/webpack.config.js && webpack --config ./webpack/webpack.config.min.js",
+    "build": "npm run build:clean && npm run build:lib",
+    "build:clean": "rimraf build/",
+    "build:dev": "set NODE_ENV=development && npm run build",
+    "build:prod": "set NODE_ENV=production && npm run build",
+    "version:patch": "npm version patch",
+    "push:git": "git push --tags origin master --quiet",
+    "conventional-github-releaser": "conventional-github-releaser -p angular",
+    "commit:build": "git add . && git commit -m \"Deploy commit\" --quiet && npm run push:git || true",
+    "create:patch": "npm run version:patch && npm run push:git",
+    "deploy": ".env.bat && npm run build:prod && npm run commit:build && npm publish && npm run conventional-github-releaser -p angular && npm run create:patch"
+  },
+  "typings": "src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeterKottas/react-native-web-redux-auth.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PeterKottas/react-native-web-redux-auth/issues"
+  },
+  "homepage": "https://github.com/PeterKottas/react-native-web-redux-auth",
+  "peerDependencies": {
+    "prop-types": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}
