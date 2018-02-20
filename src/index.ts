@@ -1,12 +1,17 @@
 import createOidcMiddleware from './shared/oidcMiddleware';
 
-// redux-oidc components
-export { default as createUserManager } from './web/helpers/createUserManager';
-export { default as processSilentRenew } from './web/helpers/processSilentRenew';
+// shared components
 export { default as loadUser } from './shared/helpers/loadUser';
 export { default as CallbackComponent } from './web/CallbackComponent';
 export { default as reducer } from './shared/reducer/reducer';
 export { default as OidcProvider } from './shared/OidcProvider';
+
+// web components
+export { default as createUserManager } from './web/helpers/createUserManager';
+export { default as processSilentRenew } from './web/helpers/processSilentRenew';
+
+// native components
+export { default as createNativeUserManager } from './native/helpers/createNativeUserManager';
 
 // shared constants
 export { USER_EXPIRED } from './shared/constants';

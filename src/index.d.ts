@@ -1,10 +1,11 @@
 import createOidcMiddleware from './shared/oidcMiddleware';
-export { default as createUserManager } from './web/helpers/createUserManager';
-export { default as processSilentRenew } from './web/helpers/processSilentRenew';
 export { default as loadUser } from './shared/helpers/loadUser';
 export { default as CallbackComponent } from './web/CallbackComponent';
 export { default as reducer } from './shared/reducer/reducer';
 export { default as OidcProvider } from './shared/OidcProvider';
+export { default as createUserManager } from './web/helpers/createUserManager';
+export { default as processSilentRenew } from './web/helpers/processSilentRenew';
+export { default as createNativeUserManager } from './native/helpers/createNativeUserManager';
 export { USER_EXPIRED } from './shared/constants';
 export { REDIRECT_SUCCESS } from './shared/constants';
 export { USER_FOUND } from './shared/constants';
