@@ -7,8 +7,8 @@ import { AsyncStorage } from 'react-native';
 import { UserMapping } from './mappings/UserMapping';
 
 export interface NativeUserManagerSettings extends AuthConfig {
-    accessTokenExpiringNotificationTime: number;
-    appStorePrefix: string;
+    accessTokenExpiringNotificationTime?: number;
+    appStorePrefix?: string;
 }
 
 export class NativeUserManager {
