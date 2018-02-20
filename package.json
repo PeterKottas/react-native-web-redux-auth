@@ -37,7 +37,7 @@
     "webpack-dev-server": "2.11.1",
     "webpack-merge": "4.1.1"
   },
-  "name": "guestbell-forms",
+  "name": "react-native-web-redux-auth",
   "scripts": {
     "build:local": "npm run build:clean && webpack --config ./webpack/webpack.config.js",
     "build:lib": "webpack --config ./webpack/webpack.config.js && webpack --config ./webpack/webpack.config.min.js",
