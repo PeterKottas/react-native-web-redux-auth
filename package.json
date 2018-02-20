@@ -35,7 +35,8 @@
     "webpack": "3.10.0",
     "webpack-bundle-analyzer": "2.10.0",
     "webpack-dev-server": "2.11.1",
-    "webpack-merge": "4.1.1"
+    "webpack-merge": "4.1.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "name": "react-native-web-redux-auth",
   "scripts": {
@@ -63,10 +64,10 @@
   },
   "homepage": "https://github.com/PeterKottas/react-native-web-redux-auth",
   "peerDependencies": {
+    "oidc-client": "*",
     "prop-types": "*",
     "react": "*",
     "react-native": "*",
-    "redux": "*",
-    "oidc-client": "*"
+    "redux": "*"
   }
 }

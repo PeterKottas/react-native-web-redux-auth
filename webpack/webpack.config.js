@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 var isLocalBuild = process.env.NODE_ENV === 'local';
 const merge = require('webpack-merge');
+var nodeExternals = require('webpack-node-externals');
 
 module.exports = merge(require('./webpack.config.base'), {
     plugins: [
@@ -12,10 +13,5 @@ module.exports = merge(require('./webpack.config.base'), {
             }
         })
     ],
-    externals: {
-        "react": "react",
-        "prop-types": "prop-types",
-        "oidc-client": "oidc-client",
-        "oidc-client-fetch": "oidc-client-fetch"
-    }
+    externals: [nodeExternals()]
 });
