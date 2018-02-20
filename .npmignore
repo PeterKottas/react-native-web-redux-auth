@@ -1,0 +1,7 @@
+/webpack
+/docs
+/docs/demo
+.env.bat
+/.vs
+/.git
+/node_modules
