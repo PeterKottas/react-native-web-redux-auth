@@ -3,9 +3,7 @@ import { Store } from 'redux';
 import { UserManager } from 'oidc-client';
 export interface OidcProviderProps {
     userManager: UserManager;
-    store: Store<{
-        [key: string]: object;
-    }>;
+    store: Store<any>;
 }
 declare class OidcProvider extends React.Component<OidcProviderProps> {
     private userManager;

@@ -5,7 +5,8 @@ import { UserManager, User } from 'oidc-client';
 
 export interface OidcProviderProps {
     userManager: UserManager;
-    store: Store<{ [key: string]: object }>;
+    // tslint:disable-next-line:no-any
+    store: Store<any>;
 }
 
 class OidcProvider extends React.Component<OidcProviderProps> {
