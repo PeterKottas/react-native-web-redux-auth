@@ -1,0 +1,13 @@
+import { Middleware } from 'redux';
+import { UserManager } from 'oidc-client';
+import FinalUser from './FinalUser';
+export declare let storedUser: any;
+export declare let nextMiddleware: any;
+export declare function setNext(newNext: Middleware): void;
+export declare function getNext(): Middleware;
+export declare function setStoredUser(user: FinalUser): void;
+export declare function removeStoredUser(): void;
+export declare function getUserCallback(user: FinalUser): void;
+export declare function errorCallback(error: Error): void;
+export declare const middlewareHandler: (userManager: UserManager) => Middleware;
+export default function createOidcMiddleware(userManager: UserManager): Middleware;

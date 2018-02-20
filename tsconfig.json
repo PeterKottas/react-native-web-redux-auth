@@ -10,7 +10,7 @@
     "sourceMap": true,
     "skipDefaultLibCheck": true,
     "lib": [ "es6", "dom" ],
-    "types": [ "webpack-env", "node" ],
+    "types": [ ],
     "paths": {
       "reusables/*": [
         "./ClientApp/components/reusables/*"

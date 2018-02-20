@@ -1,15 +1,15 @@
-import { User } from 'oidc-client';
 import { Action } from 'redux';
+import FinalUser from './../FinalUser';
 export declare function userExpired(): {
     type: string;
 };
-export declare function redirectSuccess(user: User): {
+export declare function redirectSuccess(user: FinalUser): {
     type: string;
-    payload: User;
+    payload: FinalUser;
 };
-export declare function userFound(user: User): {
+export declare function userFound(user: FinalUser): {
     type: string;
-    payload: User;
+    payload: FinalUser;
 };
 export declare function silentRenewError(error: Error): {
     type: string;
