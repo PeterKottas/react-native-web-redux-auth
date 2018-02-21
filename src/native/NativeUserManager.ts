@@ -43,7 +43,7 @@ export class NativeUserManager {
             const result = await authorize(this._config);
             const mappedUser = UserMapping.FromAppAuthToOidc(result, this._config.scopes);
             this._storeUser(mappedUser);
-            this._events.load(mappedUser, false);
+            this._events.load(mappedUser, true);
             return mappedUser;
         } catch (e) {
             // tslint:disable-next-line:no-console

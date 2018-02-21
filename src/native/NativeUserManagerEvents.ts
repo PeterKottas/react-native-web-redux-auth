@@ -21,9 +21,9 @@ export class NativeUserManagerEvents {
         this._config = {
             ...config,
             accessTokenExpiringNotificationTime: config.accessTokenExpiringNotificationTime ?
-                DefaultAccessTokenExpiringNotificationTime
-                :
                 config.accessTokenExpiringNotificationTime
+                :
+                DefaultAccessTokenExpiringNotificationTime
         };
 
         this._userLoaded = new Event();
@@ -90,7 +90,7 @@ export class NativeUserManagerEvents {
     public removeUserLoaded(cb: Function) {
         this._userLoaded.removeHandler(cb);
     }
-    
+
     public addUserUnloaded(cb: Function) {
         this._userUnloaded.addHandler(cb);
     }
@@ -109,7 +109,7 @@ export class NativeUserManagerEvents {
         this._silentRenewError.raise(e);
     }*/
 
-    public  addUserSignedOut(cb: Function) {
+    public addUserSignedOut(cb: Function) {
         this._userSignedOut.addHandler(cb);
     }
     public removeUserSignedOut(cb: Function) {
