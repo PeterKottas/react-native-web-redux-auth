@@ -1,5 +1,5 @@
 import { AuthorizeResult } from 'react-native-app-auth';
-import { User } from 'oidc-client';
+import { FinalUser } from '../..';
 export declare class UserMapping {
-    static FromAppAuthToOidc(user: AuthorizeResult, scopes: string[]): User;
+    static FromAppAuthToOidc(user: AuthorizeResult, scopes: string[]): FinalUser;
 }

@@ -1,9 +1,9 @@
 import { AuthorizeResult } from 'react-native-app-auth';
-import { User } from 'oidc-client';
 import NativeUser from '../NativeUser';
+import { FinalUser } from '../..';
 
 export class UserMapping {
-    public static FromAppAuthToOidc(user: AuthorizeResult, scopes: string[]): User {
+    public static FromAppAuthToOidc(user: AuthorizeResult, scopes: string[]): FinalUser {
         return new NativeUser({
             id_token: user.idToken,
             refresh_token: user.refreshToken,

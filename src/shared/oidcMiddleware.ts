@@ -42,7 +42,7 @@ export function getUserCallback(user: FinalUser) {
 // callback for the userManager's getUser.catch
 export function errorCallback(error: Error) {
     // tslint:disable-next-line:no-console
-    console.error(`redux-oidc: Error loading user in oidcMiddleware: ${error.message}`);
+    console.error(`react-native-web-redux-auth: Error loading user in oidcMiddleware: ${error.message}`);
     nextMiddleware(loadUserError());
 }
 

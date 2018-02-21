@@ -2,9 +2,9 @@ import { NativeUserManagerEvents } from './NativeUserManagerEvents';
 import { AuthConfig, authorize } from 'react-native-app-auth';
 import ReactNativePersistentStorage from './ReactNativePersistentStorage';
 import { USER_STORE_KEY } from './constants';
-import { User } from 'oidc-client';
 import { AsyncStorage } from 'react-native';
 import { UserMapping } from './mappings/UserMapping';
+import FinalUser from './../shared/FinalUser';
 
 export interface NativeUserManagerSettings extends AuthConfig {
     accessTokenExpiringNotificationTime?: number;
@@ -36,11 +36,12 @@ export class NativeUserManager {
             } else {
                 return null;
             }
+            return user;
         });
     }
 
     private _getUser() {
-        return this._userStore.get(USER_STORE_KEY).then(async (user: User) => {
+        return this._userStore.get(USER_STORE_KEY).then(async (user: FinalUser) => {
             if (user) {
                 return user;
             }
@@ -56,7 +57,7 @@ export class NativeUserManager {
         });
     }
 
-    private _storeUser(user?: User) {
+    private _storeUser(user?: FinalUser) {
         if (user) {
             return this._userStore.set(USER_STORE_KEY, user);
         } else {
