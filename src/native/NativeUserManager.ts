@@ -33,25 +33,28 @@ export class NativeUserManager {
         return this._getUser().then(user => {
             if (user) {
                 this._events.load(user, false);
-            } else {
-                return null;
             }
-            return user;
+            return null;
         });
+    }
+
+    public async signIn() {
+        try {
+            const result = await authorize(this._config);
+            const mappedUser = UserMapping.FromAppAuthToOidc(result, this._config.scopes);
+            this._storeUser(mappedUser);
+            this._events.load(mappedUser, false);
+            return mappedUser;
+        } catch (e) {
+            // tslint:disable-next-line:no-console
+            console.error('Unable to authorize user', e);
+        }
     }
 
     private _getUser() {
         return this._userStore.get(USER_STORE_KEY).then(async (user: FinalUser) => {
             if (user) {
                 return user;
-            }
-            try {
-                const result = await authorize(this._config);
-                const mappedUser = UserMapping.FromAppAuthToOidc(result, this._config.scopes);
-                this._storeUser(mappedUser);
-            } catch (e) {
-                // tslint:disable-next-line:no-console
-                console.error('Unable to authorize user', e);
             }
             return null;
         });
