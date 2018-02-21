@@ -32,7 +32,7 @@ export class NativeUserManager {
     public getUser() {
         return this._getUser().then(user => {
             if (user) {
-                this._events.load(user, false);
+                this._events.load(user, true);
             }
             return null;
         });
