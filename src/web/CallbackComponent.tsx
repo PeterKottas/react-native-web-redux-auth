@@ -15,7 +15,7 @@ class CallbackComponent extends React.Component<CallbackComponentProps> {
     }
 
     public render() {
-        return React.Children.only(this.props.children);
+        return this.props.children;
     }
 
     private onRedirectSuccess(user: User) {

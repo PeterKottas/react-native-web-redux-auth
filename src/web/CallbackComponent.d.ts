@@ -8,7 +8,7 @@ export interface CallbackComponentProps {
 }
 declare class CallbackComponent extends React.Component<CallbackComponentProps> {
     componentDidMount(): void;
-    render(): React.ReactElement<any>;
+    render(): React.ReactNode;
     private onRedirectSuccess(user);
     private onRedirectError(error);
 }
