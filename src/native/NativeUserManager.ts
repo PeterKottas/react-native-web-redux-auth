@@ -40,7 +40,26 @@ export class NativeUserManager {
 
     public async signIn() {
         try {
-            const result = await authorize(this._config);
+            const libConfig: AuthConfiguration = (({
+                clientId,
+                clientSecret,
+                issuer,
+                scopes,
+                redirectUrl,
+                serviceConfiguration,
+                additionalParameters,
+                dangerouslyAllowInsecureHttpRequests
+            }) => ({
+                clientId,
+                clientSecret,
+                issuer,
+                scopes,
+                redirectUrl,
+                serviceConfiguration,
+                additionalParameters,
+                dangerouslyAllowInsecureHttpRequests
+            }))(this._config);
+            const result = await authorize(libConfig);
             const mappedUser = UserMapping.FromAppAuthToOidc(result, this._config.scopes);
             this._storeUser(mappedUser);
             this._events.load(mappedUser, true);
