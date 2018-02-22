@@ -1,15 +1,15 @@
 import { NativeUserManagerEvents } from './NativeUserManagerEvents';
-import { AuthConfig, authorize } from 'react-native-app-auth';
+import { authorize, AuthConfiguration } from 'react-native-app-auth';
 import ReactNativePersistentStorage from './ReactNativePersistentStorage';
 import { USER_STORE_KEY } from './constants';
 import { AsyncStorage } from 'react-native';
 import { UserMapping } from './mappings/UserMapping';
 import FinalUser from './../shared/FinalUser';
 
-export interface NativeUserManagerSettings extends AuthConfig {
+export type NativeUserManagerSettings = AuthConfiguration & {
     accessTokenExpiringNotificationTime?: number;
     appStorePrefix?: string;
-}
+};
 
 export class NativeUserManager {
     private _config: NativeUserManagerSettings;

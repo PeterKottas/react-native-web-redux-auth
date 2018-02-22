@@ -43,7 +43,6 @@ export class NativeUserManagerEvents {
         // only register events if there's an access token where we care about expiration
         if (user.access_token) {
             let duration = user.expires_in;
-
             if (duration > 0) {
                 // only register expiring if we still have time
                 let expiring = duration - this._config.accessTokenExpiringNotificationTime;

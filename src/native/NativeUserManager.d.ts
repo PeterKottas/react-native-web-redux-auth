@@ -1,10 +1,10 @@
 import { NativeUserManagerEvents } from './NativeUserManagerEvents';
-import { AuthConfig } from 'react-native-app-auth';
+import { AuthConfiguration } from 'react-native-app-auth';
 import FinalUser from './../shared/FinalUser';
-export interface NativeUserManagerSettings extends AuthConfig {
+export declare type NativeUserManagerSettings = AuthConfiguration & {
     accessTokenExpiringNotificationTime?: number;
     appStorePrefix?: string;
-}
+};
 export declare class NativeUserManager {
     private _config;
     private _events;
