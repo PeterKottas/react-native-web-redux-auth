@@ -1,10 +1,7 @@
-import { AsyncStorage } from 'react-native';
 export interface ReactNativePersistentStorageConfig {
     prefix?: string;
-    asyncStorage: AsyncStorage;
 }
 export default class ReactNativePersistentStorage {
-    private _asyncStorage;
     private _prefix;
     private _unprefix;
     constructor(config: ReactNativePersistentStorageConfig);

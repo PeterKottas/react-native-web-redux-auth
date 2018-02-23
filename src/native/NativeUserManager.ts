@@ -2,7 +2,6 @@ import { NativeUserManagerEvents } from './NativeUserManagerEvents';
 import { authorize, AuthConfiguration } from 'react-native-app-auth';
 import ReactNativePersistentStorage from './ReactNativePersistentStorage';
 import { USER_STORE_KEY } from './constants';
-import { AsyncStorage } from 'react-native';
 import { UserMapping } from './mappings/UserMapping';
 import FinalUser from './../shared/FinalUser';
 
@@ -19,8 +18,7 @@ export class NativeUserManager {
     constructor(config: NativeUserManagerSettings) {
         this._events = new NativeUserManagerEvents(config);
         this._userStore = new ReactNativePersistentStorage({
-            prefix: config.appStorePrefix,
-            asyncStorage: AsyncStorage
+            prefix: config.appStorePrefix
         });
         this._config = { ...config };
     }
