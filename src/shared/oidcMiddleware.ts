@@ -47,10 +47,10 @@ export function errorCallback(error: Error) {
 }
 
 // the middleware handler function
-export const middlewareHandler = (userManager: UserManager): Middleware =>
-    (api: MiddlewareAPI<void>) =>
-        (next: Dispatch<void>) =>
-            <A extends Action>(action: A) => {
+export const middlewareHandler = (userManager: UserManager): Middleware<{}, any, Dispatch<Action>> =>
+    (api: MiddlewareAPI<Dispatch<Action>>) =>
+        (next: Dispatch<Action>) =>
+            (action: Action) => {
                 // prevent an infinite loop of dispatches of these action types (issue #30 & #63)
                 if (action.type === USER_EXPIRED || action.type === LOADING_USER || action.type === USER_FOUND) {
                     return next(action);

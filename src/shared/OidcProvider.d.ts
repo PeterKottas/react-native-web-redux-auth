@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from 'react';
 import { Store } from 'redux';
 import { UserManager } from 'oidc-client';
@@ -15,11 +14,11 @@ declare class OidcProvider extends React.Component<OidcProviderProps> {
     componentWillMount(): void;
     componentWillUnmount(): void;
     render(): React.ReactElement<any>;
-    private onUserLoaded(user);
-    private onSilentRenewError(error);
-    private onAccessTokenExpired();
-    private onUserUnloaded();
-    private onAccessTokenExpiring();
-    private onUserSignedOut();
+    private onUserLoaded;
+    private onSilentRenewError;
+    private onAccessTokenExpired;
+    private onUserUnloaded;
+    private onAccessTokenExpiring;
+    private onUserSignedOut;
 }
 export default OidcProvider;

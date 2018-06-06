@@ -13,6 +13,6 @@ export declare class NativeUserManager {
     readonly events: NativeUserManagerEvents;
     getUser(): Promise<any>;
     signIn(): Promise<FinalUser>;
-    private _getUser();
-    private _storeUser(user?);
+    private _getUser;
+    private _storeUser;
 }

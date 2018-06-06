@@ -26,5 +26,5 @@ export declare class NativeUserManagerEvents {
     removeUserSignedOut(cb: Function): void;
     addUserSessionChanged(cb: Function): void;
     removeUserSessionChanged(cb: Function): void;
-    private cancelTimers();
+    private cancelTimers;
 }

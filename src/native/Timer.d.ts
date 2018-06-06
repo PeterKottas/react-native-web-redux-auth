@@ -5,5 +5,5 @@ export default class Timer extends Event {
     constructor();
     init(duration: number): void;
     cancel(): void;
-    private _callback();
+    private _callback;
 }
