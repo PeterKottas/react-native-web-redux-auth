@@ -12,6 +12,7 @@ export declare class NativeUserManager {
     constructor(config: NativeUserManagerSettings);
     readonly events: NativeUserManagerEvents;
     getUser(): Promise<any>;
+    signOut(): Promise<void>;
     signIn(): Promise<FinalUser>;
     private _getUser;
     private _storeUser;

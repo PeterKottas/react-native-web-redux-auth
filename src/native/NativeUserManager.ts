@@ -1,5 +1,5 @@
 import { NativeUserManagerEvents } from './NativeUserManagerEvents';
-import { authorize, AuthConfiguration } from 'react-native-app-auth';
+import { authorize, AuthConfiguration, revoke, BaseAuthConfiguration } from 'react-native-app-auth';
 import ReactNativePersistentStorage from './ReactNativePersistentStorage';
 import { USER_STORE_KEY } from './constants';
 import { UserMapping } from './mappings/UserMapping';
@@ -36,6 +36,30 @@ export class NativeUserManager {
         });
     }
 
+    public async signOut() {
+        try {
+            const libConfig: BaseAuthConfiguration = (({
+                clientId,
+                clientSecret,
+                issuer,
+                scopes,
+                redirectUrl,
+                serviceConfiguration,
+                additionalParameters,
+                dangerouslyAllowInsecureHttpRequests
+            }) => ({
+                clientId,
+                issuer,
+                serviceConfiguration,
+            }))(this._config);
+            const user = await this._getUser();
+            revoke(libConfig, { tokenToRevoke: user.access_token });
+        } catch (e) {
+            // tslint:disable-next-line:no-console
+            console.error('Unable to signOut', e);
+        }
+    }
+
     public async signIn() {
         try {
             const libConfig: AuthConfiguration = (({
@@ -64,7 +88,7 @@ export class NativeUserManager {
             return mappedUser;
         } catch (e) {
             // tslint:disable-next-line:no-console
-            console.error('Unable to authorize user', e);
+            console.error('Unable to signIn', e);
         }
     }
 
